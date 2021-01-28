@@ -1,0 +1,15 @@
+.box-navbar {
+  display: flex;
+  min-height: 5vh;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+.box-item-navbar {
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+.item-navbar {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
