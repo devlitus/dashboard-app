@@ -6,9 +6,15 @@ input {
 }
 input[type='submit'] {
     background-color: #15D0B9;
+    min-width: 24vw;
+    min-height: 5vh;
     font-size: 1.5rem;
     color: white;
     border: 0;
+}
+.icon-error {
+    position: absolute;
+    margin-top: .5rem;
 }
 .title {
     margin-top: 1rem;

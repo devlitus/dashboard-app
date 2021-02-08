@@ -25,7 +25,7 @@ export const LoginScreen = () => {
         <form className="form" onSubmit={handleSubmit}>
           <div className="control-input">
             <div className="icon-error">
-              {errors.path === "email" ? (
+              {errors?.path === "email" ? (
                 <FontAwesomeIcon icon={faTimesCircle} size="lg" color="red" />
               ) : (
                 <FontAwesomeIcon icon={faCheckCircle} size="lg" color="green" />
@@ -41,6 +41,13 @@ export const LoginScreen = () => {
             />
           </div>
           <div className="control-input">
+            <div className="icon-error">
+              {errors?.path === "password" ? (
+                <FontAwesomeIcon icon={faTimesCircle} size="lg" color="red" />
+              ) : (
+                <FontAwesomeIcon icon={faCheckCircle} size="lg" color="green" />
+              )}
+            </div>
             <input
               className="box-input"
               type="password"
@@ -48,16 +55,9 @@ export const LoginScreen = () => {
               placeholder="Your password*"
               onChange={handleInputChange}
             />
-            <div className="icon-error">
-              {errors.path === "password" ? (
-                <FontAwesomeIcon icon={faTimesCircle} size="lg" color="red" />
-              ) : (
-                <FontAwesomeIcon icon={faCheckCircle} size="lg" color="green" />
-              )}
-            </div>
           </div>
           <input
-            className="box-input"
+            className=""
             type="submit"
             value="Send"
             disabled={!!errors}
