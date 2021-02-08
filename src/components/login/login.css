@@ -35,7 +35,7 @@ input[type='submit'] {
 }
 .box-input {
     margin-bottom: 1rem;
-    min-width: 30vw;
+    max-width: 30vw;
     min-height: 5vh;
 }
 .form {

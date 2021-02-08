@@ -1,8 +1,13 @@
 import React from "react";
-// import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 import "./dashboard-app.css";
 import { RouterApp } from "./routers/RouterApp";
 
 export const DashboardApp = () => {
-  return <RouterApp />;
+  return (
+    <Provider store={store}>
+      <RouterApp />;
+    </Provider>
+  );
 };
