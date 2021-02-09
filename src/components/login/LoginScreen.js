@@ -1,22 +1,27 @@
 import { useDispatch } from "react-redux";
 import { login } from "../../actions/auth";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faTimesCircle } from "@fortawesome/free-regular-svg-icons";
-
-import { useForm } from "../../hooks/userForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-regular-svg-icons";
 import "validate";
 
+import { useForm } from "../../hooks/userForm";
 import { user } from "../../helpers/validateLogin";
 import "./login.css";
+import { useHistory } from "react-router-dom";
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
-  const [formValue, handleInputChange] = useForm({ email: "", password: "" });
+  const history =useHistory();
+  const [formValue, handleInputChange] = useForm();
   const { email, password } = formValue;
   const [errors] = user.validate({ email, password });
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    history.replace('/dashboard');
   };
   return (
     <div className="box-login">
@@ -56,12 +61,7 @@ export const LoginScreen = () => {
               onChange={handleInputChange}
             />
           </div>
-          <input
-            className=""
-            type="submit"
-            value="Send"
-            disabled={!!errors}
-          />
+          <input className="" type="submit" value="Send" disabled={!!errors} />
         </form>
         <p className="title">Forgot password ?</p>
       </div>

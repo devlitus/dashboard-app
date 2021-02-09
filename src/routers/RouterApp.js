@@ -1,18 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import { Dashboard } from "../components/dashboard/Dashboard";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { DashboardScreen } from "../components/dashboard/DashboardScreen";
 import { LoginScreen } from '../components/login/LoginScreen';
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 export const RouterApp = () => {
+  const {logged} = useSelector(state => state.auth);
+
   return (
     <Router>
-      <>
+      <div>
         <Switch>
-          <Route exact path="/" component={LoginScreen} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Redirect to="/" />
+          <PublicRoute exact path="/" component={LoginScreen} isAutenticated={!logged}/>
+          <PrivateRoute path="/dashboard" component={DashboardScreen} isAutenticated={logged} />
         </Switch>
-      </>
+      </div>
     </Router>
   );
 };

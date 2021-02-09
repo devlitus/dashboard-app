@@ -12,9 +12,14 @@ input[type='submit'] {
     color: white;
     border: 0;
 }
+input[type='submit']:disabled {
+    background-color: #c4c4c4b4;
+    color: #15d0ba;
+}
 .icon-error {
     position: absolute;
-    margin-top: .5rem;
+    margin-top: .7rem;
+    margin-left: .7rem;
 }
 .title {
     margin-top: 1rem;

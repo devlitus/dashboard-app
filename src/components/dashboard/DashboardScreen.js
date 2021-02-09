@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { RouterDashboard } from '../../routers/RouterDashboard';
 import { Navbar } from '../navbar/Navbar';
 import { Sidebar } from '../sidebar/Sidebar';
@@ -10,7 +11,9 @@ export const DashboardScreen = () => {
       <header className="navbar">
         <Navbar />
       </header>
-      <section className="box-logo">Logo</section>
+      <section className="box-logo">
+       <Link to="/dashboard"  />Logo
+        </section>
       <nav className="sidebar">
         <Sidebar />
       </nav>
