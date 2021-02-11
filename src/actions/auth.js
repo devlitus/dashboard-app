@@ -1,11 +1,13 @@
 import { types } from "../types/types";
 
-export const login = (email, password) => ({
+export const startLoginEmailAndPassword = (email, password) => {};
+
+export const login = (uid, email) => ({
   type: types.login,
-  payload: { email, password, }
+  payload: { uid, email, }
 });
 
 export const logout = () => ({
-  type: types.password,
+  type: types.logout,
   payload: {}
 })

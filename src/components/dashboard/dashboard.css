@@ -5,7 +5,7 @@
       [header-left] "logo head" 5vh[header-right]
       [main-left] "nav  main" auto [main-right]
       [footer-left] "nav  foot" 10vh [footer-right]
-      / 15vw auto;
+      / 15rem auto;
   }
   .box-logo {
     background-color: #343A40;

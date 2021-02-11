@@ -1,21 +1,29 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/auth";
 import "./navbar.css";
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    localStorage.clear();
+  }
   return (
-    <div className="box-navbar">
-      <div className="box-item-navbar">
+    <ul className="box-navbar">
+      <li className="box-item-navbar">
         Menu
-      </div>
-      <div className="item-navbar">
+      </li>
+      <li className="item-navbar">
         Email
-      </div>
-      <div className="item-navbar">
+      </li>
+      <li className="item-navbar">
         Avatar
-      </div>
-      <div className="item-navbar">
-        Notificaciones
-      </div>
-    </div>
+      </li>
+      <li className="item-navbar" onClick={handleLogout}>
+        Logout
+      </li>
+    </ul>
   );
 };

@@ -1,16 +1,10 @@
 import { useDispatch } from "react-redux";
-import { login } from "../../actions/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheckCircle,
-  faTimesCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { useHistory } from "react-router-dom";
 import "validate";
-
+import { login } from "../../actions/auth";
 import { useForm } from "../../hooks/userForm";
 import { user } from "../../helpers/validateLogin";
 import "./login.css";
-import { useHistory } from "react-router-dom";
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
@@ -18,8 +12,11 @@ export const LoginScreen = () => {
   const [formValue, handleInputChange] = useForm();
   const { email, password } = formValue;
   const [errors] = user.validate({ email, password });
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {email, logged: true};
+    localStorage.setItem('user', JSON.stringify(user));
     dispatch(login(email, password));
     history.replace('/dashboard');
   };
@@ -29,13 +26,7 @@ export const LoginScreen = () => {
         <h1 className="title">Signe In</h1>
         <form className="form" onSubmit={handleSubmit}>
           <div className="control-input">
-            <div className="icon-error">
-              {errors?.path === "email" ? (
-                <FontAwesomeIcon icon={faTimesCircle} size="lg" color="red" />
-              ) : (
-                <FontAwesomeIcon icon={faCheckCircle} size="lg" color="green" />
-              )}
-            </div>
+  
             <input
               className="box-input"
               type="email"
@@ -46,13 +37,7 @@ export const LoginScreen = () => {
             />
           </div>
           <div className="control-input">
-            <div className="icon-error">
-              {errors?.path === "password" ? (
-                <FontAwesomeIcon icon={faTimesCircle} size="lg" color="red" />
-              ) : (
-                <FontAwesomeIcon icon={faCheckCircle} size="lg" color="green" />
-              )}
-            </div>
+
             <input
               className="box-input"
               type="password"
